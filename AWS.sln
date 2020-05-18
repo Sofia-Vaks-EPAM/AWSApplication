@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSApplication.API", "AWSApplication\AWSApplication.API.csproj", "{CACB1B08-CE24-4C18-A3DC-76BEE8F86412}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSApplication.Data.Contracts", "AWSApplication.Data.Contracts\AWSApplication.Data.Contracts.csproj", "{78592D83-F669-4318-A4C3-632358D3A2A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Data.Contracts", "AWSApplication.Data.Contracts\AWSApplication.Data.Contracts.csproj", "{78592D83-F669-4318-A4C3-632358D3A2A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSApplication.Data", "AWSApplication.Data\AWSApplication.Data.csproj", "{A93CEB66-D133-4258-9A27-4D8E9474E067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Data", "AWSApplication.Data\AWSApplication.Data.csproj", "{A93CEB66-D133-4258-9A27-4D8E9474E067}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Models", "AWSApplication.Data.Models\AWSApplication.Models.csproj", "{76B65484-1F6E-4350-846C-4A57BC208739}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.API", "AWSApplication.API\AWSApplication.API.csproj", "{4ED6EC70-785E-47F0-AF73-6F70D87848F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CACB1B08-CE24-4C18-A3DC-76BEE8F86412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CACB1B08-CE24-4C18-A3DC-76BEE8F86412}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CACB1B08-CE24-4C18-A3DC-76BEE8F86412}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CACB1B08-CE24-4C18-A3DC-76BEE8F86412}.Release|Any CPU.Build.0 = Release|Any CPU
 		{78592D83-F669-4318-A4C3-632358D3A2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78592D83-F669-4318-A4C3-632358D3A2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78592D83-F669-4318-A4C3-632358D3A2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,12 +31,15 @@ Global
 		{76B65484-1F6E-4350-846C-4A57BC208739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76B65484-1F6E-4350-846C-4A57BC208739}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76B65484-1F6E-4350-846C-4A57BC208739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CACB1B08-CE24-4C18-A3DC-76BEE8F86412} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
 		{78592D83-F669-4318-A4C3-632358D3A2A6} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
 		{A93CEB66-D133-4258-9A27-4D8E9474E067} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
 		{76B65484-1F6E-4350-846C-4A57BC208739} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
