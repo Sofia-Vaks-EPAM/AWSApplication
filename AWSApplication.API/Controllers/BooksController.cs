@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Amazon.SQS.Model;
 using AWSApplication.Data.Contracts;
 using AWSApplication.Models;
 using Microsoft.AspNetCore.Mvc;

@@ -35,6 +35,8 @@ namespace AWSApplication
 
             Task t = DynamoDBInitializer.InitializeDynamoDB();
             t.Wait();
+            Task sqsTask = SQSInitializer.InitializeSQS();
+            sqsTask.Wait();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

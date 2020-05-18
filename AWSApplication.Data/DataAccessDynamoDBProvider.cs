@@ -1,6 +1,7 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Amazon.SQS.Model;
 using AWSApplication.Data.Contracts;
 using AWSApplication.Models;
 using Microsoft.Extensions.Logging;
@@ -22,6 +23,11 @@ namespace AWSApplication.Data
             //Set a local DB context  
             var context = new DynamoDBContext(DynamoDBInitializer.client);
             await context.SaveAsync<Book>(book);
+            //Create the request to send
+            var sendRequest = new SendMessageRequest();
+            sendRequest.QueueUrl = SQSInitializer.queueUrl;
+            sendRequest.MessageBody = string.Format("{{ 'message' : 'Add new book: ISBN = {0}, Title = {1}, Description = {2}'}}", book.ISBN, book.Title, book.Description);
+            var sendMessageResponse = SQSInitializer.sqsClient.SendMessageAsync(sendRequest).Result;
         }
         public async Task UpdateBookRecord(Book book)
         {
@@ -37,6 +43,11 @@ namespace AWSApplication.Data
                 editedState = book;
                 //Save an book object  
                 await context.SaveAsync<Book>(editedState);
+                //Create the request to send
+                var sendRequest = new SendMessageRequest();
+                sendRequest.QueueUrl = SQSInitializer.queueUrl;
+                sendRequest.MessageBody = string.Format("{{ 'message' : 'Update book, edited state: ISBN = {0}, Title = {1}, Description = {2}'}}", editedState.ISBN, editedState.Title, editedState.Description);
+                var sendMessageResponse = SQSInitializer.sqsClient.SendMessageAsync(sendRequest).Result;
             }
         }
         public async Task DeleteBookRecord(string bookId)
@@ -73,6 +84,7 @@ namespace AWSApplication.Data
             //Getting an book object  
             List<ScanCondition> conditions = new List<ScanCondition>();
             var allDocs = await context.ScanAsync<Book>(conditions).GetRemainingAsync();
+            Console.WriteLine("Receiving Message");
             return allDocs;
         }
     }

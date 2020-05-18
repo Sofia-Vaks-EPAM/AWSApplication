@@ -10,6 +10,7 @@ namespace AWSApplication.Data
 {
     public static class DynamoDBInitializer
     {
+        public const string queueUrl = "https://sqs.us-east-2.amazonaws.com/718240643545/awsqueue";
         private
         const string accessKey = "AKIA2OOT2PHM3XCBPZEN";
         private

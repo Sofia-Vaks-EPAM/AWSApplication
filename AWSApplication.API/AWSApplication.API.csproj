@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.SQS" Version="3.3.102.112" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AWSApplication.Data\AWSApplication.Data.csproj" />
   </ItemGroup>
 
