@@ -5,11 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.71" />
     <PackageReference Include="AWSSDK.SQS" Version="3.3.102.112" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AWSApplication.Data\AWSApplication.Data.csproj" />
+    <ProjectReference Include="..\AWSApplication.MessageQueues.Contracts\AWSApplication.MessageQueues.Contracts.csproj" />
+    <ProjectReference Include="..\AWSApplication.MessageQueues\AWSApplication.MessageQueues.csproj" />
   </ItemGroup>
 
 

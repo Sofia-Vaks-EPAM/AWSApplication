@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Amazon.SQS.Model;
 using AWSApplication.Data.Contracts;
+using AWSApplication.MessageQueues.Contracts;
 using AWSApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace AWSApplication.API.Controllers
 {
@@ -15,9 +17,13 @@ namespace AWSApplication.API.Controllers
     public class BooksController : Controller
     {
         private readonly IDataAccessProvider _dataAccessProvider;
-        public BooksController(IDataAccessProvider dataAccessProvider)
+
+        private readonly IMessageQueueService _queueService;
+
+        public BooksController(IDataAccessProvider dataAccessProvider, IMessageQueueService queueService)
         {
             _dataAccessProvider = dataAccessProvider;
+            _queueService = queueService;
         }
 
         [HttpGet]
@@ -31,6 +37,13 @@ namespace AWSApplication.API.Controllers
             if (ModelState.IsValid)
             {
                 await _dataAccessProvider.AddBookRecord(book);
+                await _queueService.Send(new BookQueueRequest
+                {
+                    ISBN = book.ISBN,
+                    Title = book.Title,
+                    Description = book.Description
+
+                });
             }
         }
         [HttpGet]

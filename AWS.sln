@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Data.Contracts", "AWSApplication.Data.Contracts\AWSApplication.Data.Contracts.csproj", "{78592D83-F669-4318-A4C3-632358D3A2A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Data", "AWSApplication.Data\AWSApplication.Data.csproj", "{A93CEB66-D133-4258-9A27-4D8E9474E067}"
@@ -12,6 +10,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Models", "AWSApplication.Data.Models\AWSApplication.Models.csproj", "{76B65484-1F6E-4350-846C-4A57BC208739}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.API", "AWSApplication.API\AWSApplication.API.csproj", "{4ED6EC70-785E-47F0-AF73-6F70D87848F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSApplication.Lambda", "AWSApplication.Lambda\AWSApplication.Lambda.csproj", "{4DC93540-853D-491B-B7D7-6AF4492C0E61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSApplication.MessageQueues.Contracts", "AWSApplication.MessageQueues.Contracts\AWSApplication.MessageQueues.Contracts.csproj", "{E2496AEB-1E7F-485C-9755-08D0267EF1E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSApplication.MessageQueues", "AWSApplication.MessageQueues\AWSApplication.MessageQueues.csproj", "{59988764-7858-45AE-8E30-C43ABA87C776}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +39,21 @@ Global
 		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED6EC70-785E-47F0-AF73-6F70D87848F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC93540-853D-491B-B7D7-6AF4492C0E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC93540-853D-491B-B7D7-6AF4492C0E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC93540-853D-491B-B7D7-6AF4492C0E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC93540-853D-491B-B7D7-6AF4492C0E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2496AEB-1E7F-485C-9755-08D0267EF1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2496AEB-1E7F-485C-9755-08D0267EF1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2496AEB-1E7F-485C-9755-08D0267EF1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2496AEB-1E7F-485C-9755-08D0267EF1E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59988764-7858-45AE-8E30-C43ABA87C776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59988764-7858-45AE-8E30-C43ABA87C776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59988764-7858-45AE-8E30-C43ABA87C776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59988764-7858-45AE-8E30-C43ABA87C776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{78592D83-F669-4318-A4C3-632358D3A2A6} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
-		{A93CEB66-D133-4258-9A27-4D8E9474E067} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
-		{76B65484-1F6E-4350-846C-4A57BC208739} = {93517E27-D2BA-40D1-9D1D-ECC2BBEEA320}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC600E16-0952-44EB-950D-7706494E50CA}

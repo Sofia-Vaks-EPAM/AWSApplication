@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Amazon.DynamoDBv2;
+using Amazon.S3;
+using Amazon.SQS;
 using AWSApplication.Data;
 using AWSApplication.Data.Contracts;
+using AWSApplication.MessageQueues;
+using AWSApplication.MessageQueues.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,12 +36,13 @@ namespace AWSApplication
         {
             services.AddControllers();
 
+            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+            services.AddAWSService<IAmazonS3>();
+            services.AddAWSService<IAmazonDynamoDB>();
+            services.AddAWSService<IAmazonSQS>();
             services.AddScoped<IDataAccessProvider, DataAccessDynamoDBProvider>();
+            services.AddScoped<IMessageQueueService, SQSService>();
 
-            Task t = DynamoDBInitializer.InitializeDynamoDB();
-            t.Wait();
-            Task sqsTask = SQSInitializer.InitializeSQS();
-            sqsTask.Wait();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

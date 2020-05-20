@@ -5,14 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.106.4" />
     <PackageReference Include="AWSSDK.SQS" Version="3.3.102.112" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AWSApplication.Data.Contracts\AWSApplication.Data.Contracts.csproj" />
+    <ProjectReference Include="..\AWSApplication.MessageQueues.Contracts\AWSApplication.MessageQueues.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
