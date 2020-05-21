@@ -11,6 +11,8 @@ using Amazon.Lambda.SQSEvents;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
+using AWSApplication.MessageQueues.Contracts;
+using Newtonsoft.Json;
 using ThirdParty.BouncyCastle.Asn1;
 
 
@@ -28,6 +30,7 @@ namespace AWSApplication.Lambda
         /// </summary>
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast2;
         private static IAmazonS3 s3Client;
+        private static readonly string bucketName = "aws-app-bucket";
 
         public Function()
         {
@@ -44,23 +47,41 @@ namespace AWSApplication.Lambda
         /// <returns></returns>
         public async Task FunctionHandler(SQSEvent evnt, ILambdaContext context)
         {
-            var fileTransferUtility =
-                new TransferUtility(s3Client);
-
             foreach (var message in evnt.Records)
             {
-                await ProcessMessageAsync(message, context, fileTransferUtility);
+                await ProcessMessageAsync(message, context);
             }
         }
 
-        private async Task ProcessMessageAsync(SQSEvent.SQSMessage message, ILambdaContext context, TransferUtility fileTransferUtility)
+        private async Task ProcessMessageAsync(SQSEvent.SQSMessage message, ILambdaContext context)
         {
 
             byte[] bytes = Encoding.ASCII.GetBytes(message.Body);
             using (MemoryStream ms = new MemoryStream())
             {
                 ms.Write(bytes);
-                await fileTransferUtility.UploadAsync(ms, "vaksbusket", message.MessageId + ".txt");
+                var bookRequest = JsonConvert.DeserializeObject<BookQueueRequest>(message.Body);
+                switch(bookRequest.OperationType)
+                {
+                    case OperationType.Add:
+                    case OperationType.Update:
+                        var putObjectRequest = new PutObjectRequest
+                        {
+                            BucketName = bucketName,
+                            Key = bookRequest.ISBN + ".txt",
+                            InputStream = ms
+                        };
+                        await s3Client.PutObjectAsync(putObjectRequest);
+                        break;
+                    case OperationType.Delete:
+                        var deleteObjectRequest = new DeleteObjectRequest
+                        {
+                            BucketName = bucketName,
+                            Key = bookRequest.ISBN + ".txt"
+                        };
+                        await s3Client.DeleteObjectAsync(deleteObjectRequest);
+                        break;
+                }
             }
 
         }

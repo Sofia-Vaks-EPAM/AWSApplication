@@ -17,12 +17,10 @@ namespace AWSApplication.Data
 {
     public class DataAccessDynamoDBProvider : IDataAccessProvider
     {
-        private readonly ILogger _logger;
         private readonly DynamoDBContext _context;
 
-        public DataAccessDynamoDBProvider(ILoggerFactory loggerFactory, IAmazonDynamoDB amazonDynamoDb, IAmazonSQS sqsClient)
+        public DataAccessDynamoDBProvider(IAmazonDynamoDB amazonDynamoDb, IAmazonSQS sqsClient)
         {
-            _logger = loggerFactory.CreateLogger("DataAccessDynamoDBProvider");
             _context = new DynamoDBContext(amazonDynamoDb);
 
         }
@@ -30,6 +28,7 @@ namespace AWSApplication.Data
         {
             await _context.SaveAsync<Book>(book);
         }
+
         public async Task UpdateBookRecord(Book book)
         {
             //Getting an book object  
@@ -44,23 +43,12 @@ namespace AWSApplication.Data
                 await _context.SaveAsync<Book>(editedState);
             }
         }
+
         public async Task DeleteBookRecord(string bookId)
         {
-            const string tableName = "Book";
-            var request = new DeleteItemRequest
-            {
-                TableName = tableName,
-                Key = new Dictionary<string, AttributeValue>() {
-                        {
-                            "ISBN",
-                            new AttributeValue {
-                                S = bookId
-                            }
-                        }
-                    }
-            };
-           await _context.DeleteAsync(request);
+            await _context.DeleteAsync<Book>(bookId);
         }
+
         public async Task<Book> GetBookSingleRecord(string id)
         {
             List<ScanCondition> conditions = new List<ScanCondition>();

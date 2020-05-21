@@ -41,8 +41,8 @@ namespace AWSApplication.API.Controllers
                 {
                     ISBN = book.ISBN,
                     Title = book.Title,
-                    Description = book.Description
-
+                    Description = book.Description,
+                    OperationType = OperationType.Add
                 });
             }
         }
@@ -52,6 +52,7 @@ namespace AWSApplication.API.Controllers
         {
             return await _dataAccessProvider.GetBookSingleRecord(id);
         }
+
         [HttpPut]
         [Route("Edit")]
         public async Task Edit([FromBody] Book book)
@@ -59,13 +60,26 @@ namespace AWSApplication.API.Controllers
             if (ModelState.IsValid)
             {
                 await _dataAccessProvider.UpdateBookRecord(book);
+                await _queueService.Send(new BookQueueRequest
+                {
+                    ISBN = book.ISBN,
+                    Title = book.Title,
+                    Description = book.Description,
+                    OperationType = OperationType.Update
+                });
             }
         }
+
         [HttpDelete]
         [Route("Delete/{bookId}")]
         public async Task DeleteConfirmed(string bookId)
         {
             await _dataAccessProvider.DeleteBookRecord(bookId);
+            await _queueService.Send(new BookQueueRequest
+            {
+                ISBN = bookId,
+                OperationType = OperationType.Delete
+            });
         }
     }
 }
