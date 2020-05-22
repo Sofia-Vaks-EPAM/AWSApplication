@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Amazon.SQS.Model;
 using AWSApplication.Data.Contracts;
 using AWSApplication.MessageQueues.Contracts;
 using AWSApplication.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace AWSApplication.API.Controllers
 {
@@ -46,6 +41,7 @@ namespace AWSApplication.API.Controllers
                 });
             }
         }
+
         [HttpGet]
         [Route("Details/{id}")]
         public async Task<Book> Details(string id)

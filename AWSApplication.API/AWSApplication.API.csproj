@@ -14,6 +14,7 @@
     <ProjectReference Include="..\AWSApplication.Data\AWSApplication.Data.csproj" />
     <ProjectReference Include="..\AWSApplication.MessageQueues.Contracts\AWSApplication.MessageQueues.Contracts.csproj" />
     <ProjectReference Include="..\AWSApplication.MessageQueues\AWSApplication.MessageQueues.csproj" />
+    <ProjectReference Include="..\AWSApplication.Models\AWSApplication.Models.csproj" />
   </ItemGroup>
 
 

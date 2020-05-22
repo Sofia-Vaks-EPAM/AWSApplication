@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AWSApplication.Data.Contracts\AWSApplication.Data.Contracts.csproj" />
+    <ProjectReference Include="..\AWSApplication.Models\AWSApplication.Models.csproj" />
   </ItemGroup>
 
 </Project>

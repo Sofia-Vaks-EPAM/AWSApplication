@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AWSApplication.MessageQueues.Contracts
+﻿namespace AWSApplication.MessageQueues.Contracts
 {
     public class BookQueueRequest
     {

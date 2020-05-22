@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.S3;
 using Amazon.SQS;
@@ -12,13 +7,9 @@ using AWSApplication.MessageQueues;
 using AWSApplication.MessageQueues.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace AWSApplication
 {
@@ -37,9 +28,11 @@ namespace AWSApplication
             services.AddControllers();
 
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+
             services.AddAWSService<IAmazonS3>();
             services.AddAWSService<IAmazonDynamoDB>();
             services.AddAWSService<IAmazonSQS>();
+
             services.AddScoped<IDataAccessProvider, DataAccessDynamoDBProvider>();
             services.AddScoped<IMessageQueueService, SQSService>();
 

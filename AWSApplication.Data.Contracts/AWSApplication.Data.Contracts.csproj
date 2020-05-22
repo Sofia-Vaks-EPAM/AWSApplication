@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AWSApplication.Data.Models\AWSApplication.Models.csproj" />
+    <ProjectReference Include="..\AWSApplication.Models\AWSApplication.Models.csproj" />
   </ItemGroup>
 
 </Project>

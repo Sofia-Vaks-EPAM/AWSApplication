@@ -2,9 +2,6 @@
 using Amazon.SQS.Model;
 using AWSApplication.MessageQueues.Contracts;
 using Newtonsoft.Json;
-using System;
-using System.Net.Mail;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace AWSApplication.MessageQueues

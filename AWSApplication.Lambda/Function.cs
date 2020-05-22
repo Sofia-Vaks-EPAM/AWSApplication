@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon;
@@ -10,10 +6,8 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Amazon.S3;
 using Amazon.S3.Model;
-using Amazon.S3.Transfer;
 using AWSApplication.MessageQueues.Contracts;
 using Newtonsoft.Json;
-using ThirdParty.BouncyCastle.Asn1;
 
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
